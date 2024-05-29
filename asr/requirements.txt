@@ -1,6 +1,11 @@
-transformers==4.31.0
-librosa==0.10.1
+transformers==4.37.0
+accelerate
 fastapi
 accelerate
 uvicorn[standard]
-pandas==2.0.3
+pandas==1.5.3
+soundfile
+noisereduce
+--extra-index-url https://download.pytorch.org/whl/cu117
+torch==1.13.1+cu117
+torchaudio==0.13.1+cu117
