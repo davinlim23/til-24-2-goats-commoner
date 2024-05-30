@@ -1,5 +1,9 @@
 models/
+best_model/
 results/
+
+# Pycharm
+.idea
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
