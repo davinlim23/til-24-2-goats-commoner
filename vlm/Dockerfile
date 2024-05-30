@@ -13,6 +13,8 @@ ENV PYTHONUNBUFFERED 1
 # set this flag to just ignore the warning
 ENV PIP_ROOT_USER_ACTION=ignore
 
+RUN apt-get update && apt-get install -y libgl1
+
 RUN pip install -U pip
 WORKDIR /workspace
 
