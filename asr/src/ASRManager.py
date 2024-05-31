@@ -5,18 +5,18 @@ import io
 import noisereduce as nr
 
 
-def denoise_data(audio,rate):
-    # Perform noise reduction
-    noisy_part = audio[0:int(rate*0.5)]  # Identify the noisy part
-    reduced_noise_audio = nr.reduce_noise(y=audio, sr=rate, y_noise=noisy_part)
-    return reduced_noise_audio
+# def denoise_data(audio,rate):
+#     # Perform noise reduction
+#     noisy_part = audio[0:int(rate*0.5)]  # Identify the noisy part
+#     reduced_noise_audio = nr.reduce_noise(y=audio, sr=rate, y_noise=noisy_part)
+#     return reduced_noise_audio
 
 def prepare_for_inference(audio_path,processor):
    # load audio data
     waveform, sample_rate = sf.read(io.BytesIO(audio_path), dtype='float32')
     # print(waveform.shape)
     
-    waveform = denoise_data(waveform,sample_rate)
+    # waveform = denoise_data(waveform,sample_rate)
 
     # compute log-Mel input features from input audio array 
     input_features = processor(waveform, sampling_rate = sample_rate,return_tensors="pt").input_features
