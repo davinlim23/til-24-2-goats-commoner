@@ -7,8 +7,8 @@ class NLPManager:
     def __init__(self):
         # load model and tokenizer
         self.device = 0 if torch.cuda.is_available() else -1
-        self.tokenizer = AutoTokenizer.from_pretrained("best_model")
-        self.model = AutoModelForTokenClassification.from_pretrained("best_model")
+        self.tokenizer = AutoTokenizer.from_pretrained("models/distilbert_model")
+        self.model = AutoModelForTokenClassification.from_pretrained("models/distilbert_model")
         self.pipe = pipeline("ner", model=self.model, tokenizer=self.tokenizer, device=self.device, aggregation_strategy="max")
         
         # convert heading to numeric
