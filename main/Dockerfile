@@ -5,6 +5,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED 1
 
+ENV HOME /workspace
+
 WORKDIR $HOME
 RUN pip install -U pip
 COPY requirements.txt .

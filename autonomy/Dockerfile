@@ -6,6 +6,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED 1
 
+ENV HOME /workspace
+
 WORKDIR $HOME
 # install required robomaster libraries
 RUN apt-get update && apt-get install curl libsm6 libxext6 ffmpeg libfontconfig1 libxrender1 libgl1-mesa-glx -y

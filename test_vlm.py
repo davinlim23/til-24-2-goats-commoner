@@ -26,7 +26,7 @@ def main():
 
     with open(input_dir / "vlm.jsonl", "r") as f:
         for line in f:
-            if counter >= 1000:
+            if counter >= 100:
                 break
             if line.strip() == "":
                 continue
