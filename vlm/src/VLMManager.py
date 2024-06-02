@@ -14,7 +14,7 @@ from PIL import Image
 # from torchvision.utils import save_image
 # from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 from transformers import AutoTokenizer, AutoImageProcessor, VisionTextDualEncoderProcessor, VisionTextDualEncoderConfig, VisionTextDualEncoderModel
-from ultralytics import RTDETR, YOLOWorld
+from ultralytics import RTDETR
 
 # class FRCNNModelWrapper:
 #     def __init__(self, model, n_classes, device="cpu", weights=None):
@@ -64,7 +64,7 @@ class VLMManager:
         img = Image.open(io.BytesIO(image)).convert("RGB")
         # img_wh = img.size
         
-        outputs = self.detr_model.predict(img, conf=0.1)[0]
+        outputs = self.detr_model.predict(img)[0]
         bboxes = outputs.boxes
         
         xywh = bboxes.xywh.cpu().numpy()

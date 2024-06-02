@@ -12,3 +12,4 @@ accelerate
 uvicorn[standard]
 
 ultralytics
+dill
