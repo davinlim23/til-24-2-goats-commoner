@@ -1,7 +1,7 @@
 services:
   til-main:
     build: main/
-    image: til_main:v0.0.1
+    image: 2-goats-commoner-main:finals
     environment:
       - COMPETITION_SERVER_IP=${COMPETITION_SERVER_IP}
       - COMPETITION_SERVER_PORT=${COMPETITION_SERVER_PORT}
@@ -27,7 +27,7 @@ services:
     command: ["python", "participant_server.py"]
   til-asr:
     build: asr/
-    image: til_asr:v0.0.1
+    image: 2-goats-commoner-asr:finals
     container_name: til-asr
     environment:
       NVIDIA_VISIBLE_DEVICES: 0
@@ -53,7 +53,7 @@ services:
       start_period: 3s
   til-nlp:
     build: nlp/
-    image: til_nlp:v0.0.1
+    image: 2-goats-commoner-nlp:finals
     container_name: til-nlp
     environment:
       NVIDIA_VISIBLE_DEVICES: 0
@@ -79,7 +79,7 @@ services:
       start_period: 3s
   til-autonomy:
     build: autonomy/
-    image: til_autonomy:v0.0.1
+    image: 2-goats-commoner-autonomy:finals
     stdin_open: true
     tty: true
     environment:
@@ -105,7 +105,7 @@ services:
       start_period: 3s
   til-vlm:
     build: vlm/
-    image: til_vl:v0.0.1
+    image: 2-goats-commoner-vlm:finals
     container_name: til-vlm
     environment:
       NVIDIA_VISIBLE_DEVICES: 0
