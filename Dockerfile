@@ -6,6 +6,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED 1
 
+ENV HOME /workspace
+
 WORKDIR $HOME
 RUN apt-get update && apt-get install curl -y
 RUN pip install -U pip

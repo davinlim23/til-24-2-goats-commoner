@@ -48,27 +48,21 @@ class MockConnectionManager:
         self.autonomy_connection: WebSocket | None = None
 
     async def simulator_connect(self, websocket: WebSocket):
-        if self.simulator_connection == None:
-            await websocket.accept()
-            self.simulator_connection = websocket
-            await websocket.send_json(
-                {
-                    "type": "teams",
-                    "teams": [TEAM_NAME],
-                }
-            )
-        else:
-            logger.info("there is already a simulator ws connection")
+        if self.simulator_connection is not None:
+            logger.info("disconnecting previous connection")
             try:
                 await self.simulator_connection.close()
             except Exception as e:
                 logger.exception(e)
-            await websocket.accept()
-            self.simulator_connection = websocket
-
-    def simulator_disconnect(self):
-        logger.info("disconnecting previous connection")
-        self.simulator_connection = None
+            self.simulator_connection = None
+        await websocket.accept()
+        self.simulator_connection = websocket
+        await websocket.send_json(
+            {
+                "type": "teams",
+                "teams": [TEAM_NAME],
+            }
+        )
 
     async def team_connect(self, websocket: WebSocket):
         if self.team_connection == None:
